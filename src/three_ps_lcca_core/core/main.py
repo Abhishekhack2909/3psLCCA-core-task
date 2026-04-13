@@ -4,7 +4,13 @@ from .utils.input_validator import ironclad_validator
 from ..inputs.input_global import InputGlobalMetaData
 
 
-def run_full_lcc_analysis(input_data, construction_costs, debug=False):
+def run_full_lcc_analysis(
+    input_data, 
+    construction_costs, 
+    debug=False,
+    latex_report=False,
+    latex_output_path=None
+):
     """
     Entry point for the OSDAG LCC module (global RUC mode only).
     Validates input, and computes Life Cycle Stage Costs using the
@@ -14,6 +20,8 @@ def run_full_lcc_analysis(input_data, construction_costs, debug=False):
         input_data (dict | InputGlobalMetaData): Project input.
         construction_costs (dict): Initial construction costs.
         debug (bool, optional): If True, dumps intermediate inputs to JSON.
+        latex_report (bool, optional): If True, generates a LaTeX report. Internally enables debug=True.
+        latex_output_path (str, optional): Path to save the LaTeX report. Defaults to 'LCCA_Report.tex'.
 
     Returns:
         dict: Stage-wise LCC results (initial, use, reconstruction, end-of-life).
@@ -22,6 +30,10 @@ def run_full_lcc_analysis(input_data, construction_costs, debug=False):
         TypeError: If input_data is of an unexpected type.
         ValueError: If input fails validation or required fields are missing.
     """
+    
+    # Enable debug mode if LaTeX report is requested
+    if latex_report:
+        debug = True
 
     # --- 1. Normalise input_data to dict ---
     if isinstance(input_data, dict):
@@ -70,7 +82,7 @@ def run_full_lcc_analysis(input_data, construction_costs, debug=False):
     # --- 7. Initialize and Run LCC Calculations ---
     stage_calc = StageCostCalculator(stage_params, construction_costs, debug)
 
-    return {
+    results = {
         "initial_stage": stage_calc.initial_cost_calculator(),
         "use_stage": stage_calc.use_stage_cost_calculator(),
         "reconstruction": stage_calc.reconstruction(),
@@ -78,3 +90,18 @@ def run_full_lcc_analysis(input_data, construction_costs, debug=False):
         "warnings": validation_report["warnings"],
         "notes": validation_report["info"],
     }
+    
+    # --- 8. Generate LaTeX Report if requested ---
+    if latex_report:
+        from .latex.report import generate_latex_report
+        
+        output_path = latex_output_path if latex_output_path else "LCCA_Report.tex"
+        generate_latex_report(
+            results=results,
+            input_data=input_data,
+            construction_costs=construction_costs,
+            output_path=output_path
+        )
+        print(f"✔ LaTeX report generated: {output_path}")
+    
+    return results
