@@ -1,0 +1,197 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Life Cycle Cost Analysis Report}
+\lhead{3psLCCA}
+\cfoot{\thepage}
+
+\title{Life Cycle Cost Analysis Report}
+\author{3psLCCA Engine}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Project Parameters}
+
+The following table summarizes the key parameters used in this Life Cycle Cost Analysis:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ll}
+\toprule
+\textbf{Parameter} & \textbf{Value} \\
+\midrule
+Service Life (years) & 75.00 \\
+Analysis Period (years) & 150.00 \\
+Discount Rate (\%) & 6.70 \\
+Inflation Rate (\%) & 5.15 \\
+Interest Rate (\%) & 7.75 \\
+Currency Conversion Factor & 88.73 \\
+\bottomrule
+\end{tabular}
+\caption{Project Parameters}
+\end{table}
+
+\section{Construction Cost Inputs}
+
+The initial construction costs and related parameters are summarized below:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lr}
+\toprule
+\textbf{Cost Component} & \textbf{Value} \\
+\midrule
+Initial Construction Cost & 12,843,979.44 \\
+Initial Carbon Emissions Cost & 2,065,434.91 \\
+Superstructure Construction Cost & 9,356,038.92 \\
+Total Scrap Value & 2,164,095.02 \\
+\bottomrule
+\end{tabular}
+\caption{Construction Cost Breakdown}
+\end{table}
+
+\section{Initial Construction Stage}
+
+\subsection{Summary}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lr}
+\toprule
+\textbf{Component} & \textbf{Cost} \\
+\midrule
+Initial Construction Cost & 12,843,979.44 \\
+Time Cost Of Loan & 215,671.82 \\
+Initial Material Carbon Emission Cost & 2,065,434.91 \\
+Initial Vehicular Emission Cost & 923,557.70 \\
+Initial Road User Cost & 20,064,546.22 \\
+\midrule
+\textbf{Total} & \textbf{36,113,190.09} \\
+\bottomrule
+\end{tabular}
+\caption{Initial Construction Stage - Summary}
+\end{table}
+
+\textit{Note: Detailed calculation breakdowns are available in the debug JSON files.}
+
+\section{Use Stage (Maintenance)}
+
+\subsection{Summary}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lr}
+\toprule
+\textbf{Component} & \textbf{Cost} \\
+\midrule
+Routine Inspection Costs & 762,521.37 \\
+Periodic Maintenance & 789,281.80 \\
+Major Inspection Costs & 717,528.91 \\
+Major Repair Cost & 2,920,720.92 \\
+Replacement Costs For Bearing And Expansion Joint & 1,817,410.56 \\
+Periodic Carbon Costs & 126,924.07 \\
+Major Repair Material Carbon Emission Costs & 25,832.39 \\
+Major Repair Vehicular Emission Costs & 1,211,636.67 \\
+Vehicular Emission Costs For Replacement Of Bearing And Expansion Joint & 18,400.11 \\
+Major Repair Road User Costs & 26,323,141.21 \\
+Road User Costs For Replacement Of Bearing And Expansion Joint & 399,747.50 \\
+\midrule
+\textbf{Total} & \textbf{35,113,145.53} \\
+\bottomrule
+\end{tabular}
+\caption{Use Stage (Maintenance) - Summary}
+\end{table}
+
+\textit{Note: Detailed calculation breakdowns are available in the debug JSON files.}
+
+\section{Reconstruction Stage}
+
+\subsection{Summary}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lr}
+\toprule
+\textbf{Component} & \textbf{Cost} \\
+\midrule
+Total Demolition And Disposal Costs & 425,135.72 \\
+Cost Of Reconstruction After Demolition & 4,251,357.19 \\
+Total Scrap Value & 716,315.45 \\
+Time Cost Of Loan & 71,387.37 \\
+Carbon Costs Demolition And Disposal & 68,365.90 \\
+Carbon Cost Of Reconstruction After Demolition & 683,658.96 \\
+Demolition Vehicular Emission Cost & 58,788.00 \\
+Reconstruction Vehicular Emission Cost & 305,697.60 \\
+Ruc Demolition & 1,277,185.54 \\
+Ruc Reconstruction & 6,641,364.80 \\
+\midrule
+\textbf{Total} & \textbf{14,499,256.53} \\
+\bottomrule
+\end{tabular}
+\caption{Reconstruction Stage - Summary}
+\end{table}
+
+\textit{Note: Detailed calculation breakdowns are available in the debug JSON files.}
+
+\section{End-of-Life Stage (Demolition)}
+
+\subsection{Summary}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lr}
+\toprule
+\textbf{Component} & \textbf{Cost} \\
+\midrule
+Total Demolition And Disposal Costs & 142,568.17 \\
+Total Scrap Value & 240,214.55 \\
+Carbon Costs Demolition And Disposal & 22,926.33 \\
+Demolition Vehicular Emission Cost & 19,714.40 \\
+Ruc Demolition & 428,300.89 \\
+\midrule
+\textbf{Total} & \textbf{853,724.34} \\
+\bottomrule
+\end{tabular}
+\caption{End-of-Life Stage (Demolition) - Summary}
+\end{table}
+
+\textit{Note: Detailed calculation breakdowns are available in the debug JSON files.}
+
+\section{Summary}
+
+The following table presents the total costs for each lifecycle stage and the grand total:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lr}
+\toprule
+\textbf{Lifecycle Stage} & \textbf{Total Cost} \\
+\midrule
+Initial Construction & 36,113,190.09 \\
+Use Stage (Maintenance) & 35,113,145.53 \\
+Reconstruction & 14,499,256.53 \\
+End-of-Life (Demolition) & 853,724.34 \\
+\midrule
+\textbf{Grand Total} & \textbf{86,579,316.49} \\
+\bottomrule
+\end{tabular}
+\caption{Lifecycle Cost Summary}
+\end{table}
+
+\end{document}
